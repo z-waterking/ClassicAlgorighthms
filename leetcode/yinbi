@@ -1,0 +1,24 @@
+li = [0]
+le = 20
+columns = {}
+def add_norm2_summary(columns):
+    for column in sorted(set(columns), key=lambda x: x.key):
+        try:
+            dim = column.dimension
+        except:
+            dim = column.embedding_dimension
+
+for i, t in enumerate(li):
+    '''
+        switch the indexs larger than le
+    '''
+    if i > le:
+        try:
+            dim = column.dimension
+        except:
+            try:
+                dim = column.embedding_dimension
+            except:
+                dim = len(column.boundaries) + 1
+    else:
+        continue
