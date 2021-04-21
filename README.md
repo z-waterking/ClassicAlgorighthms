@@ -19,7 +19,7 @@
 |  单链表  | [单链表](https://github.com/z-waterking/ClassicAlgorighthms/blob/main/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/SingleLinkedList.py) | 从传入的列表中构造单链表<br />头插一个元素<br />尾插一个元素<br />向中间指定位置插入元素<br />删除头部元素<br />删除尾部元素<br />删除指定中间位置的元素<br />递归反转整个链表 |
 |  二叉树  | [二叉树](https://github.com/z-waterking/ClassicAlgorighthms/blob/main/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/BinaryTree.py) | 从先序列表和中序列表构造二叉树<br />从中序列表和后序列表构造二叉树<br />二叉树的先序递归遍历<br />二叉树的中序递归遍历<br />二叉树的后序递归遍历<br />二叉树的先序非递归遍历<br />二叉树的中序非递归遍历<br />二叉树的后序非递归遍历<br />二叉树的层序遍历<br /> |
 |  最小栈  |                                                              | 从传入的列表中构造最小栈<br />插入一个元素<br />弹出一个元素<br />取得最小元素<br />清空所有元素 |
-|          |                                                              |                                                              |
+|    堆    |                                                              | 通过数组构造一个堆<br />向堆中插入一个元素<br />取出堆顶元素<br />判断堆是否是空的<br />清空所有元素<br />将数组变成一个堆<br />堆中index结点上浮<br />堆中index结点下沉 |
 
 ## 经典算法
 

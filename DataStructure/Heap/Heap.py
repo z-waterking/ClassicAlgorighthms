@@ -102,6 +102,7 @@ class Heap():
         :param index: 上浮的结点索引
         :return: None
         '''
+        # 当父节点到0时，不必再向上了
         while index // 2 > 0 and self.__heap[index] > self.__heap[index // 2]:
             self.__heap[index], self.__heap[index // 2] = self.__heap[index // 2], self.__heap[index]
             index = index // 2
