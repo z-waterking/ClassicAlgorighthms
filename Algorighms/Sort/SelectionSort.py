@@ -16,8 +16,8 @@ class SelectionSort():
         :param nums: 数字列表
         :return: list, 从小到大排好序的数组
         '''
-        # 一共比较 len(nums) - 1 趟即可
-        for i in range(len(nums) - 1):
+        # 对每个i,从i后面找到最小的元素，与位置i的元素进行交换
+        for i in range(len(nums)):
             min_index = i
             for j in range(i+1, len(nums)):
                 if nums[j] < nums[min_index]:
