@@ -36,6 +36,8 @@ class SingleLinkedList():
         if type(val_list) != list:
             raise Exception("Please offer a list!")
 
+        self.clear()
+
         # 按顺序构造链表
         temp_pointer = self.__head
         for val in val_list:
@@ -164,6 +166,14 @@ class SingleLinkedList():
 
         # 递归反转链表
         self.__head.next = reverse_recursion(self.__head.next)
+
+    def clear(self):
+        '''
+        清空单链表
+        :return:
+        '''
+        logging.info("clear LinkedList!")
+        self.__init__()
 
 #---------------------------- 私有方法 ----------------------------
     def _reset_len(self):

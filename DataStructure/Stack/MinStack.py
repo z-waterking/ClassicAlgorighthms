@@ -25,6 +25,8 @@ class MinStack():
         :param val_list: 入栈参数
         :return: None
         '''
+        self.clear()
+
         for value in val_list:
             self.push(value)
         logging.info("init success!")
@@ -82,6 +84,7 @@ class MinStack():
         清空栈
         :return: None
         '''
+        logging.info("clear stack!")
         self.__init__()
 
 # ---------------------------- 内部方法 ----------------------------
