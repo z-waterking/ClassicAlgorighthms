@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-#
 '''
 @Project    :   ClassicAlgorighthms
-@File       :   单链表.py
+@File       :   SingleLinkedList.py
 @USER       :   ZZZZZ
 @TIME       :   2021/4/21 13:51
 '''
@@ -15,7 +15,6 @@ class Node(object):
         self.val = val
         self.next = next
 
-
 # 单链表
 class SingleLinkedList():
     '''
@@ -27,6 +26,7 @@ class SingleLinkedList():
         self.__head = Node(val = "head")
         self.__length = 0
 
+# ---------------------------- 公有方法 ----------------------------
     def init(self, val_list):
         '''
         从传入的列表中构造单链表
@@ -42,21 +42,22 @@ class SingleLinkedList():
             temp_pointer.next = Node(val = val)
             temp_pointer = temp_pointer.next
 
-        self.__length = len(val_list)
+        self._reset_len()
+        self._add_len(len(val_list))
 
-    def head_add(self, value):
+    def head_insert(self, value):
         '''
         头部增加一个元素
         :param value: 元素值
         :return: None
         '''
         node = Node(val = value)
-        node.next = self.__head
+        node.next = self.__head.next
         self.__head.next = node
 
-        self.__length += 1
+        self._add_len(1)
 
-    def tail_add(self, value):
+    def tail_insert(self, value):
         '''
         尾部增加一个元素
         :param value: 元素值
@@ -68,16 +69,16 @@ class SingleLinkedList():
 
         node.next = Node(val = value)
 
-        self.__length += 1
+        self._add_len(1)
 
-    def insert(self, index, value):
+    def index_insert(self, index, value):
         '''
         向列表中间插入元素
-        :param index: 插入元素的位置，1，2，3，..., self.__length
+        :param index: 插入元素的位置，1，2，3，..., self.__length, sele.__length+1
         :param value: 插入元素的值
         :return: None
         '''
-        if index > self.__length or index < 0:
+        if index > self.__length + 1 or index < 0:
             raise Exception("index invalid!")
 
         node = self.__head
@@ -89,14 +90,46 @@ class SingleLinkedList():
         new_node.next = node.next
         node.next = new_node
 
-    def delete(self, index):
+        self._add_len(1)
+
+    def head_delete(self):
         '''
-        从链表中删除元素
+        从头部删除元素
+        :return:
+        '''
+        if self.__length == 0:
+            raise Exception("empty list!")
+
+        self.__head.next = self.__head.next.next
+        self._sub_len(1)
+
+    def tail_delete(self):
+        '''
+        从尾部删除元素
+        :return:
+        '''
+        if self.__length == 0:
+            raise Exception("empty list!")
+
+        # 走到倒数第二个结点
+        node = self.__head
+        while node.next.next != None:
+            node = node.next
+
+        node.next = node.next.next
+        self._sub_len(1)
+
+    def index_delete(self, index):
+        '''
+        从链表中删除某位置元素
         :param index: 删除元素的位置
         :return: None
         '''
         if index > self.__length or index < 0:
             raise Exception("index invalid!")
+
+        if self.__length == 0:
+            raise Exception("empty list!")
 
         node = self.__head
         # 得到此位置的前一个结点
@@ -104,6 +137,51 @@ class SingleLinkedList():
             node = node.next
 
         node.next = node.next.next
+        self._sub_len(1)
+
+    def reverse(self):
+        '''
+        反转整个链表
+        :return:
+        '''
+        def reverse_recursion(head):
+            '''
+            递归反转以head为头的链表
+            :param node:
+            :return:
+            '''
+            if head == None or head.next == None:
+                return head
+
+            # 递归下去，返回新的头结点
+            new_head = reverse_recursion(head.next)
+
+            # 之前的head与递归后的尾部相连，手动将其反转
+            head.next.next = head
+            head.next = None
+
+            return new_head
+
+        # 递归反转链表
+        self.__head.next = reverse_recursion(self.__head.next)
+
+#---------------------------- 私有方法 ----------------------------
+    def _reset_len(self):
+        self.__length = 0
+
+    def _add_len(self, num = 1):
+        self.__length += num
+
+    def _sub_len(self, num = 1):
+        self.__length -= num
+
+#---------------------------- 内部方法 ----------------------------
+    def __len__(self):
+        '''
+        获得单链表的长度
+        :return: lenght of LinkedList
+        '''
+        return self.__length
 
     def __str__(self):
         '''
@@ -117,7 +195,24 @@ class SingleLinkedList():
             node = node.next
         return ",".join(res)
 
+#---------------------------- 测试代码 ----------------------------
 if __name__ == "__main__":
     sl = SingleLinkedList()
+    # 初始化代码
     sl.init([1, 2, 3])
-    print(sl)
+    print('初始化后: {}'.format(str(sl)))
+
+    sl.head_insert(5)
+    print('头插后: {}'.format(str(sl)))
+
+    sl.tail_delete()
+    print('尾删后: {}'.format(str(sl)))
+
+    sl.index_insert(2, 3)
+    print('索引插入后:(2, 3) : {}'.format(str(sl)))
+
+    sl.index_delete(4)
+    print('索引删除后: 4 : {}'.format(str(sl)))
+
+    sl.reverse()
+    print('反转后: {}'.format(str(sl)))
