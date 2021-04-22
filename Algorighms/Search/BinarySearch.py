@@ -75,11 +75,11 @@ class BinarySearch():
 
     def SearchRightBound(self, nums, target):
         '''
-                nums中存在多个目标，查找最左侧的目标边界
-                :param nums: 待查找的数组，已经排好序了
-                :param target: 查找目标
-                :return:  如果找到目标，返回目标索引；否则，返回-1
-                '''
+        nums中存在多个目标，查找最左侧的目标边界
+        :param nums: 待查找的数组，已经排好序了
+        :param target: 查找目标
+        :return:  如果找到目标，返回目标索引；否则，返回-1
+        '''
         left = 0
         right = len(nums) - 1
 
@@ -101,7 +101,7 @@ class BinarySearch():
         if right < 0 or nums[right] != target:
             return -1
 
-        return left
+        return right
 
 if __name__ == "__main__":
     bs = BinarySearch()
@@ -109,7 +109,10 @@ if __name__ == "__main__":
     # 进行单目标二分查找
     # 能查到的场景
     res = bs.SearchTarget(nums, 7)
+    res_left_bound = bs.SearchLeftBound(nums, 7)
+    res_right_bound = bs.SearchRightBound(nums, 7)
     print("能查到元素时: {}".format(res))
+    print("能查到元素时，左侧边界: {}, 右侧边界: {}".format(res_left_bound, res_right_bound))
 
     # 查不到的场景
     res = bs.SearchTarget(nums, 0)
