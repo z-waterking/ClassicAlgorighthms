@@ -118,7 +118,7 @@ class Heap():
 
             # 比较左右结点的值
             max_index = 2 * index
-            if max_index + 1 < self.__heap_length and self.__heap[max_index + 1] > self.__heap[max_index]:
+            if max_index + 1 <= self.__heap_length and self.__heap[max_index + 1] > self.__heap[max_index]:
                 max_index = max_index + 1
 
             # 如果根结点小，则交换当前结点与左右结点中较大的那个
