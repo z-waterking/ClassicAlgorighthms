@@ -141,6 +141,24 @@ class SingleLinkedList():
         node.next = node.next.next
         self._sub_len(1)
 
+    def search(self, value):
+        '''
+        查找某个元素是否存在
+        :param value: 待查找的元素值
+        :return: 如果元素存在，True; 否则，False
+        '''
+        node = self.__head.next
+        # 顺序遍历链表
+        while node != None:
+            # 挨个比较元素值
+            if node.val == value:
+                return True
+            node = node.next
+
+        # 如果走到了这里，已经没查到
+        return False
+
+
     def reverse(self):
         '''
         反转整个链表
@@ -223,6 +241,12 @@ if __name__ == "__main__":
 
     sl.index_delete(4)
     print('索引删除后: 4 : {}'.format(str(sl)))
+
+    res = sl.search(5)
+    print('查找存在的元素: 5 :{}'.format(res))
+
+    res = sl.search(2)
+    print('查找不存在的元素: 2 :{}'.format(res))
 
     sl.reverse()
     print('反转后: {}'.format(str(sl)))

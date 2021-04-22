@@ -128,7 +128,7 @@ class TrieTree():
         if self.search_string(string) == False:
             raise Exception("please offer a valid string!")
 
-        # 采用递归遍历的形式
+        # 采用递归遍历的形式;当然，也可以自己采用栈的形式。
         # 当你作为一个结点时，考虑子节点的返回
         def delele(node, string, depth):
             # base case
@@ -137,7 +137,7 @@ class TrieTree():
 
             # 如果已经找到了对应的结点了
             if depth == len(string):
-                # 处理其中的单词数量
+                # 处理树中的串数量
                 self.__count -= node.count
                 # 将对应结点的置为0
                 node.count = 0

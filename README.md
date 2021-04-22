@@ -1,12 +1,12 @@
 # 数据结构 经典算法
 
-## leetcode
+# leetcode
 
 包括了leetcode刷题结果。
 
-## 数据结构
+# 数据结构
 
-### 写在前面：
+## 写在前面：
 
 数据结构是计算机的基础课。其底层存储只有2种类型，顺序存储和链式存储。
 
@@ -14,12 +14,11 @@
 
 虽然整个项目是用python实现的，但中间未使用”奇技淫巧“，只要方法正确，可以很快速地扩展到其他语言。
 
-### 目录
+## 目录
 
 * [单链表](/DataStructure/LinkedList/SingleLinkedList.py)
 
-  - 从传入的列表中构造单链表
-
+  * 从传入的列表中构造单链表
   * 头插一个元素
   * 尾插一个元素
   * 向中间指定位置插入元素
@@ -27,6 +26,16 @@
   * 删除尾部元素
   * 删除指定中间位置的元素
   * 递归反转整个链表
+
+* [双向链表](/DataStructure/LinkedList/DeLinkedList.py)
+
+  * 从传入的列表中构造单链表
+  * 头插一个元素
+  * 尾插一个元素
+  * 向中间指定位置插入元素
+  * 删除头部元素
+  * 删除尾部元素
+  * 删除指定中间位置的元素
 
 * [二叉树](/DataStructure/Tree/BinaryTree.py)
 
@@ -69,22 +78,21 @@
   * 堆中index结点上浮
   * 堆中index结点下沉
 
-## 经典算法
+# 经典算法
 
-### 目录
+## 目录
 
-#### 排序算法
+### 排序算法
 
 * [冒泡排序](/Algorighms/Sort/BubbleSort.py)
 * [选择排序](/Algorighms/Sort/SelectionSort.py)
 * [插入排序](/Algorighms/Sort/InsertSort.py)
 * [快速排序](/Algorighms/Sort/QuickSort.py)
 
-#### 搜索算法
+### 搜索算法
 
 * [二分查找](/Algorighms/Search/BinarySearch.py)
 * [二分查找左右边界](/Algorighms/Search/BinarySearch.py)
-
 
 ## 数据结构思维导图
 ![Image text](imgs/DataStructure.jpeg)
