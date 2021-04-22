@@ -32,7 +32,7 @@
 | 搜索算法 |      | 二分查找<br />二分查找左右侧边界                         |
 
 ## 数据结构思维导图
-
+![Image text](imgs/DataStructure.jpeg)
 
 
 ### 缺失之处：
