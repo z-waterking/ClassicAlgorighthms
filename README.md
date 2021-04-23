@@ -25,6 +25,7 @@
   * 删除头部元素
   * 删除尾部元素
   * 删除指定中间位置的元素
+  * 查找某个元素是否存在
   * 递归反转整个链表
 
 * [双向链表](/DataStructure/LinkedList/DeLinkedList.py)
@@ -36,6 +37,7 @@
   * 删除头部元素
   * 删除尾部元素
   * 删除指定中间位置的元素
+  * 查找某个元素是否存在
 
 * [二叉树](/DataStructure/Tree/BinaryTree.py)
 
@@ -95,10 +97,9 @@
 * [二分查找左右边界](/Algorighms/Search/BinarySearch.py)
 
 ## 数据结构思维导图
-![Image text](imgs/DataStructure.jpeg)
+![Image text](images/DataStructure.jpeg)
 
-
-### 缺失之处：
+## 缺失之处：
 
 参数校验：这是一个非常麻烦的工作，用户可能输入的情况千奇百怪，因此参数校验只做了最基础的部分。
 

@@ -8,7 +8,7 @@
 import logging
 logging.basicConfig(level = logging.INFO)
 
-# 单链表结点
+# 双向链表结点
 class DeNode(object):
 
     def __init__(self, val = "", left = None, right = None):
@@ -16,7 +16,7 @@ class DeNode(object):
         self.left = left
         self.right = right
 
-# 单链表
+# 双向链表
 class DeLinkedList():
     '''
         由于构造了头结点与尾结点，因此在插入与删除时，不需要对空链表进行单独考虑。
