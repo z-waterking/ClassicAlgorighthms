@@ -7,7 +7,17 @@
 '''
 
 class Node():
-    def __init__(self, val = None, left = None, right = None, N = 1, color = 'Black'):
+    def __init__(self, key = None, val = None, left = None, right = None, N = 1, color = 'Black'):
+        '''
+        初始化一个红黑树的结点
+        :param key: 结点的索引，用以比较结点
+        :param val: 结点中存储的值
+        :param left: 结点的左子树
+        :param right: 结点的右子树
+        :param N: 当前结点所在的子树的结点数量
+        :param color: 当前结点的颜色：红/黑
+        '''
+        self.key = key
         self.val = val
         self.left = left
         self.right = right
@@ -33,7 +43,7 @@ class Node():
 # ---------------------------- 辅助函数 ----------------------------
 def isRed(node):
     '''
-    判断自己是不是红结点
+    判断结点的颜色
     :return: 如果是红节点，返回True；否则，返回Fasle
     '''
     # 如果是个空结点，则为黑色
@@ -56,23 +66,25 @@ class RedBlack_Tree():
         self.__root = None
 
 # ---------------------------- 公有方法 ----------------------------
-    def init(self, values):
+    def init(self, keys, values):
         '''
         从一个值列表构造一颗红黑树
         :param values: 值列表
         :return: None
         '''
         # 将数据逐个插入
-        for value in values:
-            self.insert(value)
+        # 暂时以value作为它本身的key
+        for key, value in zip(keys, values):
+            self.insert(key, value)
 
-    def insert(self, value):
+    def insert(self, key, value):
         '''
         递归向红黑树中插入一个结点
-        :param value: 待插入的结点的值
-        :return:
+        :param key: 待插入的key值
+        :param value: 待插入的value值
+        :return: None
         '''
-        def put(node, value):
+        def put(node, key, value):
             '''
             将value插入以node为根的红黑树中
             :param node: 子树的根
@@ -81,14 +93,14 @@ class RedBlack_Tree():
             '''
             # 如果找到了空节点，向其中插入红色结点
             if node == None:
-                return Node(val = value, N = 1, color = 'Red')
+                return Node(key = key, val = value, N = 1, color = 'Red')
 
-            if value < node.val:
+            if key < node.key:
                 # 向左子树中插入
-                node.left = put(node.left, value)
-            elif value > node.val:
+                node.left = put(node.left, key, value)
+            elif key > node.key:
                 # 向右子树中插入
-                node.right = put(node.right, value)
+                node.right = put(node.right, key, value)
             else:
                 # 更新结点的值
                 node.val = value
@@ -117,13 +129,31 @@ class RedBlack_Tree():
             return node
 
         # 将value放入根结点
-        self.__root = put(self.__root, value)
+        self.__root = put(self.__root, key, value)
         # 每次插入完成后，将根节点设为黑色
         self.__root.color = 'Black'
 
     def delete(self, value):
         pass
-    
+
+    def search(self, key):
+        '''
+        在红黑树中查询子节点
+        :param key: 要查找的key值
+        :return: 查找到的value值
+        '''
+        node = self.__root
+        while node != None:
+            if node.key == key:
+                return node.val
+            elif key < node.key:
+                node = node.left
+            else:
+                node = node.right
+
+        # 没查找，返回None
+        return None
+
     def _rotateLeft(self, node):
         '''
         将一个红色右链接的结点  旋转  成为一个红色左链接的结点
@@ -223,7 +253,7 @@ class RedBlack_Tree():
                 return root
             nonlocal res
             # 访问结点
-            res.append(root.val)
+            res.append((root.val))
             # 遍历左子树
             pre_traverse(root.left)
             # 遍历右子树
@@ -411,5 +441,13 @@ class RedBlack_Tree():
 if __name__ == "__main__":
     rbt = RedBlack_Tree()
     # 从列表初始化红黑树
-    rbt.init([5, 7, 8, 9, 0, 1, 2])
+    rbt.init([5, 7, 8, 9, 0, 1, 2], [5, 7, 8, 9, 0, 1, 2])
     print("初始化后的红黑树为:\n{}".format(rbt))
+
+    # 向红黑树中插入一个结点
+    rbt.insert(10, 10)
+    print("插入结点后的红黑树为:\n{}".format(rbt))
+
+    # 查找红黑树中的结点
+    res = rbt.search(10)
+    print("查得的结点值为: {}".format(res))
