@@ -7,23 +7,50 @@
 '''
 
 class Node():
-    def __init__(self, val = None, left = None, right = None, color = 'Black'):
+    def __init__(self, val = None, left = None, right = None, N = 1, color = 'Black'):
         self.val = val
         self.left = left
         self.right = right
 
         # 包含自身的子树的 结点数量
-        self.N = 1
+        self.N = N
         # 父结点指向它的链接颜色，默认是一条黑链
         self.color = color
 
+    def flipColors(self):
+        '''
+        将左右结点由红转黑，将自己由黑转红
+        :return: None
+        '''
+        if self.left != None:
+            self.left.color = 'Black'
 
+        if self.right != None:
+            self.right.color = 'Black'
+
+        self.color = 'Red'
+
+# ---------------------------- 辅助函数 ----------------------------
+def isRed(node):
+    '''
+    判断自己是不是红结点
+    :return: 如果是红节点，返回True；否则，返回Fasle
+    '''
+    # 如果是个空结点，则为黑色
+    if node == None:
+        return False
+
+    if node.color == 'Red':
+        return True
+    else:
+        return False
+
+# ---------------------------- 红黑树 ----------------------------
+# ---------------------------------------------------------------
+# ---------------------------------------------------------------
 class RedBlack_Tree():
     '''
     红黑树 与 2-3树可以 一一对应
-
-
-
     '''
     def __init__(self):
         self.__root = None
@@ -35,10 +62,64 @@ class RedBlack_Tree():
         :param values: 值列表
         :return: None
         '''
-        pass
+        # 将数据逐个插入
+        for value in values:
+            self.insert(value)
 
     def insert(self, value):
-        pass
+        '''
+        递归向红黑树中插入一个结点
+        :param value: 待插入的结点的值
+        :return:
+        '''
+        def put(node, value):
+            '''
+            将value插入以node为根的红黑树中
+            :param node: 子树的根
+            :param value: 待插入的值
+            :return:
+            '''
+            # 如果找到了空节点，向其中插入红色结点
+            if node == None:
+                return Node(val = value, N = 1, color = 'Red')
+
+            if value < node.val:
+                # 向左子树中插入
+                node.left = put(node.left, value)
+            elif value > node.val:
+                # 向右子树中插入
+                node.right = put(node.right, value)
+            else:
+                # 更新结点的值
+                node.val = value
+
+            # 假装现在左、右子树已经全部插入好了
+            # State3: 如果左黑，右红，则左旋 <-> 红链接插在了3结点的中间，这样转换为 State2
+            # 这种情况也处理了向2结点的右边插入结点
+            if isRed(node.left) == False and isRed(node.right) == True:
+                node = self._rotateLeft(node)
+
+            # State2: 如果左红，且左边的左子结点也是红的，则右旋 <-> 红链接插在了3结点的左边,旋转后转换为 State1
+            if isRed(node.left) == True and isRed(node.left.left) == True:
+                node = self._rotateRight(node)
+
+            # State1: 如果左红 且 右红，则改变node，node.left, node.right的颜色, 根节点变为红，将红色向上传递
+            if isRed(node.left) == True and isRed(node.right) == True:
+                node.flipColors()
+
+            # 更新node的N值,左右孩子可能为空，因此要判断
+            node.N = 1
+            if node.left != None:
+                node.N += node.left.N
+            if node.right != None:
+                node.N += node.right.N
+
+            return node
+
+        # 将value放入根结点
+        self.__root = put(self.__root, value)
+        # 每次插入完成后，将根节点设为黑色
+        self.__root.color = 'Black'
 
     def delete(self, value):
         pass
@@ -76,7 +157,14 @@ class RedBlack_Tree():
 
         # 更新新旧结点所在子树的结点数量
         new_node.N = node.N
-        node.N = 1 + node.left.N + node.right.N
+
+        # 更新node的N值,左右孩子可能为空，因此要判断
+        node.N = 1
+        if node.left != None:
+            node.N += node.left.N
+        if node.right != None:
+            node.N += node.right.N
+
         return new_node
 
     def _rotateRight(self, node):
@@ -113,7 +201,14 @@ class RedBlack_Tree():
 
         # 更新新旧结点所在子树的结点数量
         new_node.N = node.N
-        node.N = 1 + node.left.N + node.right.N
+
+        # 更新node的N值
+        node.N = 1
+        if node.left != None:
+            node.N += node.left.N
+        if node.right != None:
+            node.N += node.right.N
+
         return new_node
 
     # --------------------- 递归遍历 -----------------------
@@ -314,4 +409,7 @@ class RedBlack_Tree():
         return res
 
 if __name__ == "__main__":
-    pass
+    rbt = RedBlack_Tree()
+    # 从列表初始化红黑树
+    rbt.init([5, 7, 8, 9, 0, 1, 2])
+    print("初始化后的红黑树为:\n{}".format(rbt))
