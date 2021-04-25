@@ -36,7 +36,7 @@
 
 * [双向链表](/DataStructure/LinkedList/DeLinkedList.py)
 
-  * 从传入的列表中构造单链表
+  * 从传入的列表中构造双向链表
   * 头插一个元素
   * 尾插一个元素
   * 向中间指定位置插入元素
