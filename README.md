@@ -99,6 +99,7 @@
 * [归并排序](/Algorighms/Sort/MergeSort.py)
 * [桶排序](/Algorighms/Sort/BucketSort.py)
 * [堆排序](/Algorighms/Sort/HeapSort.py)
+* [希尔排序](/Algorighms/Sort/ShellSort.py)
 
 ### 搜索算法
 
