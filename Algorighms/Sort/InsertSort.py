@@ -17,19 +17,20 @@ class InsertSort():
         :return: list, 从小到大排好序的数组
         '''
         # 先假装第一个元素是排好序的，从第二个元素开始，逐个往前面的列表里面插入
-        for i in range(len(nums) - 1):
-            # 从后往前开始比较
-            j = i + 1
+        for i in range(1, len(nums)):
             # 保存这个元素
-            temp = nums[j]
+            temp = nums[i]
+            # 从后往前开始比较
+            j = i - 1
 
-            while j > 0 and temp < nums[j-1]:
-                nums[j] = nums[j - 1]
+            # 逐个向前交换
+            while j >= 0 and temp < nums[j]:
+                nums[j + 1] = nums[j]
                 j -= 1
                 self.exchange_count += 1
 
             # 找到了位置，把元素放上
-            nums[j] = temp
+            nums[j + 1] = temp
 
         return nums
 

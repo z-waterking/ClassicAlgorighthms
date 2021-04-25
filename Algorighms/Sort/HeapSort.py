@@ -10,7 +10,7 @@
 class HeapSort():
     '''
     堆排序: 由小到大
-    堆排序要对输入的数组构造一个堆，
+    堆排序要对输入的数组构造一个堆，再逐个将元素弹出，并不断调整堆
     '''
     def __init__(self):
         # 最前面插入一个元素，使得索引i的左子结点为2i，右子结点为2i+1
@@ -31,17 +31,19 @@ class HeapSort():
         self._heapify()
         # 进行排序
         res = []
-        while self.empty() == False:
-            res.append(self.pop())
+        while self._empty() == False:
+            res.append(self._pop())
         # 返回结果
         return res
 
-    def pop(self):
+# ---------------------------- 私有方法 ----------------------------
+
+    def _pop(self):
         '''
         取出堆顶元素
         :return: 堆顶元素
         '''
-        if self.empty() == True:
+        if self._empty() == True:
             raise Exception("empty heap!")
 
         # 最后一个元素放到堆顶位置
@@ -55,7 +57,7 @@ class HeapSort():
 
         return res
 
-    def empty(self):
+    def _empty(self):
         '''
         判断堆是否是空的
         :return: True if the heap is empty else False
@@ -65,7 +67,6 @@ class HeapSort():
         else:
             return False
 
-# ---------------------------- 私有方法 ----------------------------
     def _heapify(self):
         '''
         将数组变成一个堆
@@ -76,17 +77,6 @@ class HeapSort():
         while index >= 1:
             self._sift_down(index)
             index -= 1
-
-    def _sift_up(self, index):
-        '''
-        将index结点上浮
-        :param index: 上浮的结点索引
-        :return: None
-        '''
-        # 当父节点到0时，不必再向上了
-        while index // 2 > 0 and self.__heap[index] < self.__heap[index // 2]:
-            self.__heap[index], self.__heap[index // 2] = self.__heap[index // 2], self.__heap[index]
-            index = index // 2
 
     def _sift_down(self, index):
         '''
