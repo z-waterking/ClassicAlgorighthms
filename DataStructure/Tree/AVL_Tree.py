@@ -38,6 +38,8 @@ class AVL_Tree():
     1. 插入结点时，如何保证相关结点平衡二叉树的性质。
     2. 删除结点时，如何保证相关结点平衡二叉树的性质。
 
+    平衡二叉树的失衡调整主要是通过 ** 旋转最小失衡子树来实现的 **
+
     参考文献：
         https://www.cnblogs.com/suimeng/p/4560056.html
 
@@ -313,7 +315,7 @@ class AVL_Tree():
         return res
 
 if __name__ == "__main__":
-    tree = BinaryTree()
+    tree = AVL_Tree()
     # 用前序遍历列表和中遍历列表进行初始化
     tree.InitFromPreAndInOrder([1, 2, 3, 4, 5, 6, 7], [3, 4, 2, 5, 1, 7, 6])
     print("前序+中序，初始化:\n{}".format(str(tree)))

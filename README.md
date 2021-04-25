@@ -96,6 +96,8 @@
 * [选择排序](/Algorighms/Sort/SelectionSort.py)
 * [插入排序](/Algorighms/Sort/InsertSort.py)
 * [快速排序](/Algorighms/Sort/QuickSort.py)
+* [归并排序](/Algorighms/Sort/MergeSort.py)
+* [桶排序](/Algorighms/Sort/BucketSort.py)
 
 ### 搜索算法
 
