@@ -67,8 +67,66 @@ class MergeSort:
         for i in range(start, end + 1):
             nums[i] = res[i]
 
+    def recursive_merge_sort2(self, nums):
+        """
+        归并排序递归实现
+        Args:
+            nums:   原list
+            res:    每层递归结果存放于辅助list
+        Returns:
+        """
 
+        def recursive_merge(nums, start, end):
+            '''
+            进行递归排序
+            :param nums: 待排序数组
+            :param start: 开始下标
+            :param end: 结束下标
+            :return: 排好序的结果
+            '''
+            # base case, 如果start >= end，则结束
+            if start >= end:
+                return nums[start:end + 1]
 
+            # 拆分list （下标控制 逻辑拆分）在分布式大规模排序中进行物理拆分
+            mid = start + (end - start) // 2
+            start1, end1 = start, mid
+            start2, end2 = mid + 1, end
+
+            # 对左半边进行排序
+            left_res = recursive_merge(nums, start1, end1)
+            # 对右半边进行排序
+            right_res = recursive_merge(nums, start2, end2)
+
+            # 到这里，左右半边已经排好序了
+            # 合并nums[start1:end1+1] 和 nums[start2:end2+1]
+
+            res = [0] * (len(left_res) + len(right_res))
+            k = 0
+            l = 0
+            r = 0
+            while l < len(left_res) and r < len(right_res):
+                if left_res[l] <= right_res[r]:
+                    res[k] = left_res[l]
+                    l += 1
+                else:
+                    res[k] = right_res[r]
+                    r += 1
+                k += 1
+
+            while l < len(left_res):
+                res[k] = left_res[l]
+                k += 1
+                l += 1
+
+            while r < len(right_res):
+                res[k] = right_res[r]
+                k += 1
+                r += 1
+
+            return res
+
+        return recursive_merge(nums, 0, len(nums) - 1)
 
 if __name__ == "__main__":
 
@@ -77,4 +135,4 @@ if __name__ == "__main__":
     start, end = 0, len(nums) - 1
     sort = MergeSort()
 
-    print("归并排序结果为: {}".format(sort.recursive_merge_sort(nums, res, start, end)))
+    print("归并排序结果为: {}".format(sort.recursive_merge_sort2(nums)))
