@@ -47,7 +47,7 @@ class Heap():
         self.__heap_length += 1
 
         # 向上调整
-        self._shift_up(self.__heap_length)
+        self._sift_up(self.__heap_length)
 
     def pop(self):
         '''
@@ -64,7 +64,7 @@ class Heap():
         res = self.__heap.pop()
         self.__heap_length -= 1
         # 对堆顶进行下沉
-        self._shift_down(1)
+        self._sift_down(1)
 
         return res
 
@@ -95,10 +95,10 @@ class Heap():
         # 从第一个非叶子结点开始进行操作
         index = self.__heap_length // 2
         while index >= 1:
-            self._shift_down(index)
+            self._sift_down(index)
             index -= 1
 
-    def _shift_up(self, index):
+    def _sift_up(self, index):
         '''
         将index结点上浮
         :param index: 上浮的结点索引
@@ -109,7 +109,7 @@ class Heap():
             self.__heap[index], self.__heap[index // 2] = self.__heap[index // 2], self.__heap[index]
             index = index // 2
 
-    def _shift_down(self, index):
+    def _sift_down(self, index):
         '''
         将index结点下沉
         :param index: 下沉的结点索引

@@ -98,6 +98,7 @@
 * [快速排序](/Algorighms/Sort/QuickSort.py)
 * [归并排序](/Algorighms/Sort/MergeSort.py)
 * [桶排序](/Algorighms/Sort/BucketSort.py)
+* [堆排序](/Algorighms/Sort/HeapSort.py)
 
 ### 搜索算法
 
