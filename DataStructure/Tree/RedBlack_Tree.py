@@ -61,6 +61,11 @@ def isRed(node):
 class RedBlack_Tree():
     '''
     红黑树 与 2-3树可以 一一对应
+
+
+    参考文献:
+        1. 史上最清晰的红黑树讲解（上):  http://mt.sohu.com/20161014/n470317653.shtml
+        2. 史上最清晰的红黑树讲解（下)：  https://www.sohu.com/a/116478983_355142
     '''
     def __init__(self):
         self.__root = None
@@ -151,7 +156,7 @@ class RedBlack_Tree():
             else:
                 node = node.right
 
-        # 没查找，返回None
+        # 没查到，返回None
         return None
 
     def _rotateLeft(self, node):

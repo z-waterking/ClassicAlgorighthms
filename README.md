@@ -22,6 +22,8 @@
 
 ## 目录
 
+### 表
+
 * [单链表](/DataStructure/LinkedList/SingleLinkedList.py)
 
   * 从传入的列表中构造单链表
@@ -52,7 +54,17 @@
   * 从哈希表中删除一个值
   * 哈希表中查找一个值
   * 哈希函数，通过给定的值，计算出一个位置
-    
+
+* [最小栈](/DataStructure/Stack/MinStack.py)
+
+  * 从传入的列表中构造最小栈
+  * 插入一个元素
+  * 弹出一个元素
+  * 取得最小元素
+  * 清空所有元素
+
+### 树
+
 * [二叉树](/DataStructure/Tree/BinaryTree.py)
 
   * 从先序列表和中序列表构造二叉树
@@ -90,13 +102,9 @@
   * 红黑树的后序非递归遍历
   * 红黑树的层序遍历
   
-* [最小栈](/DataStructure/Stack/MinStack.py)
+* [二叉平衡树](/DataStructure/Tree/AVL_Tree.py)
 
-  * 从传入的列表中构造最小栈
-  * 插入一个元素
-  * 弹出一个元素
-  * 取得最小元素
-  * 清空所有元素
+  * TODO
 
 * [堆](/DataStructure/Heap/Heap.py)
 
@@ -109,6 +117,20 @@
   * 堆中index结点上浮
   * 堆中index结点下沉
 
+### 图
+
+* [无向图](/DataStructure/Graph/UndiGraph.py)
+
+  * 通过传入边的列表来构造图
+  * 向图中插入一条边
+  * 从图中删除一条边
+  * 取得结点的度
+  * 取得对应边的权重
+  * 取得边的数量
+  * 判断是否是连通图
+  * 用prim算法寻找最小生成树
+  * 清空图
+
 # 经典算法
 
 ## 目录
@@ -120,7 +142,7 @@
 * [插入排序](/Algorighms/Sort/InsertSort.py)
 * [快速排序](/Algorighms/Sort/QuickSort.py)
 * [归并排序](/Algorighms/Sort/MergeSort.py)
-* [（计数）/桶排序](/Algorighms/Sort/BucketSort.py)
+* [（计数）/ 桶排序](/Algorighms/Sort/BucketSort.py)
 * [堆排序](/Algorighms/Sort/HeapSort.py)
 * [希尔排序](/Algorighms/Sort/ShellSort.py)
 * [基数排序](/Algorighms/Sort/RadixSort.py)
