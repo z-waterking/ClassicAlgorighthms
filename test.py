@@ -6,17 +6,23 @@
 @TIME       :   2021/5/7 16:48
 '''
 
+res = []
+def permute(nums):
+    bc(nums, [])
+    return res
 
-def numTrees(n):
-    # dp[i]数组含义，用i个数字可以够成多少个二叉搜索树
-    dp = [0] * (n + 1)
-    # 每加一个数字，分为如下几种情况：
-    # 1. 加的这个数字是根，则直接dp[i-1] + 1，多一种情况
-    # 2. 加的这个数字不是根，则必然作为前面所有情况的最右结点，则将前面所有情况+1
-    for i in range(1, n + 1):
-        for j in range(i):
-            dp[i] += (dp[j] + 1)
 
-    return dp[n]
+def bc(nums, track):
+    if len(track) == len(nums):
+        res.append(track)
+        return
 
-print(numTrees(3))
+    for i in range(len(nums)):
+        if nums[i] in track:
+            continue
+
+        track.append(nums[i])
+        bc(nums, track)
+        track.pop()
+
+print(permute([1, 2, 3]))

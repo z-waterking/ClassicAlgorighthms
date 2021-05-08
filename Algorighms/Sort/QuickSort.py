@@ -36,12 +36,12 @@ class QuickSort():
 
             while l < r:
                 # 将右边所有比item小的数字放到左边
-                while l < r and nums[r] > item:
+                while l < r and nums[r] >= item:
                     r -= 1
                 nums[l] = nums[r]
 
                 # 将左边所有比item大的数字放到右边
-                while l < r and nums[l] < item:
+                while l < r and nums[l] <= item:
                     l += 1
                 nums[r] = nums[l]
 

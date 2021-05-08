@@ -21,7 +21,7 @@ class BubbleSort():
             # 此处每一轮都可以使得最后一个元素就位，因此需要 -i , 不用进行后序的比较了
             for j in range(len(nums) - 1 - i):
                 if nums[j] > nums[j + 1]:
-                    nums[j], nums[j+1] = nums[j+1], nums[j]
+                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
                     # 记录一次交换
                     self.exchange_count += 1
 
