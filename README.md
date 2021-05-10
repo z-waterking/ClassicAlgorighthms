@@ -156,6 +156,12 @@
 * [二分查找](/Algorighms/Search/BinarySearch.py)
 * [二分查找左右边界](/Algorighms/Search/BinarySearch.py)
 
+### 回溯算法
+
+* [子集](/Algorighms/BackTrack/SubSet.py)
+* [组合](/Algorighms/BackTrack/Combination.py)
+* [全排列](/Algorighms/BackTrack/Permutations.py)
+
 ## 数据结构思维导图
 ![Image text](images/DataStructure.jpeg)
 
