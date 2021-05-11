@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-#
 '''
 @Project    :   ClassicAlgorighthms
-@File       :   AVL_Tree.py
+@File       :   AvlTree.py
 @USER       :   ZZZZZ
 @TIME       :   2021/4/25 10:32
 '''
@@ -22,7 +22,7 @@ class Node(object):
         self.right = right
 
 
-class AVL_Tree():
+class AvlTree():
     '''
     平衡二叉查找树
     对于普通的二叉查找树来说，有一些较为特殊的情况，会使二叉查找树退化，查找操作变为线性查找
@@ -50,4 +50,4 @@ class AVL_Tree():
 # ---------------------------- 公有方法 ----------------------------
 
 if __name__ == "__main__":
-    tree = AVL_Tree()
+    tree = AvlTree()

@@ -1,9 +1,5 @@
 # 数据结构 经典算法
 
-# leetcode
-
-包括了leetcode刷题结果。
-
 # 数据结构
 
 ## 写在前面：
@@ -24,7 +20,7 @@
 
 ### 表
 
-* [单链表](/DataStructure/LinkedList/SingleLinkedList.py)
+* [单链表](/DataStructure/Table/SingleLinkedList.py)
 
   * 从传入的列表中构造单链表
   * 头插一个元素
@@ -36,7 +32,7 @@
   * 查找某个元素是否存在
   * 递归反转整个链表
 
-* [双向链表](/DataStructure/LinkedList/DeLinkedList.py)
+* [双向链表](/DataStructure/Table/DeLinkedList.py)
 
   * 从传入的列表中构造双向链表
   * 头插一个元素
@@ -47,7 +43,7 @@
   * 删除指定中间位置的元素
   * 查找某个元素是否存在
 
-* [哈希表](/DataStructure/HashTable/HashTable.py)
+* [哈希表](/DataStructure/Table/HashTable.py)
 
   * 通过一个列表构造哈希表
   * 向哈希表中插入一个值
@@ -55,7 +51,7 @@
   * 哈希表中查找一个值
   * 哈希函数，通过给定的值，计算出一个位置
 
-* [最小栈](/DataStructure/Stack/MinStack.py)
+* [最小栈](/DataStructure/Table/MinStack.py)
 
   * 从传入的列表中构造最小栈
   * 插入一个元素
@@ -87,7 +83,7 @@
   * 清空所有元素
   * 遍历以node为结点的整个字典树
 
-* [红黑树](/DataStructure/Tree/RedBlack_Tree.py)
+* [红黑树](/DataStructure/Tree/RedBlackTree.py)
 
   * 从一个值列表构造一颗红黑树
   * 递归向红黑树中插入一个结点
@@ -102,11 +98,11 @@
   * 红黑树的后序非递归遍历
   * 红黑树的层序遍历
   
-* [二叉平衡树](/DataStructure/Tree/AVL_Tree.py)
+* [二叉平衡树](/DataStructure/Tree/AvlTree.py)
 
   * TODO
 
-* [堆](/DataStructure/Heap/Heap.py)
+* [堆](/DataStructure/Tree/Heap.py)
 
   * 通过数组构造一个堆
   * 向堆中插入一个元素
@@ -119,7 +115,16 @@
 
 ### 图
 
-* [无向图](/DataStructure/Graph/UndiGraph.py)
+* [并查集](/DataStructure/Graph/UnionFind.py)
+
+  * 初始化结点
+  * 采用quick-find方式实现union find
+  * 采用quick-union方式实现union find
+  * 采用加权quick-union方式实现union find
+  * 判断两个结点是否连通
+  * 连通结点组成的不同的连通分量数量
+
+* [无向图](/DataStructure/Graph/UndirectedGraph.py)
 
   * 通过传入边的列表来构造图
   * 向图中插入一条边
@@ -130,6 +135,9 @@
   * 判断是否是连通图
   * 用prim算法寻找最小生成树
   * 清空图
+
+## 数据结构思维导图
+![Image text](images/DataStructure.jpeg)
 
 # 经典算法
 
@@ -147,7 +155,7 @@
 * [希尔排序](/Algorighms/Sort/ShellSort.py)
 * [基数排序](/Algorighms/Sort/RadixSort.py)
 
-### 各排序算法时间复杂度
+#### 各排序算法时间复杂度
 
 ![Image text](images/SortAlgorithms.png)
 
@@ -162,6 +170,10 @@
 * [组合](/Algorighms/BackTrack/Combination.py)
 * [全排列](/Algorighms/BackTrack/Permutations.py)
 
-## 数据结构思维导图
-![Image text](images/DataStructure.jpeg)
+### 其他算法
 
+* [伪随机数构造]
+
+# leetcode
+
+包括了leetcode刷题结果。

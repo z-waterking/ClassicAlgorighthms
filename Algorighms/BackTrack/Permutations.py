@@ -45,4 +45,4 @@ class Permutations():
 if __name__ == "__main__":
     pm = Permutations()
     nums = [2, 7, 1]
-    print("数组的全部子集为:{}".format(pm.permutations(nums)))
+    print("数组的全部排列为:{}".format(pm.permutations(nums)))

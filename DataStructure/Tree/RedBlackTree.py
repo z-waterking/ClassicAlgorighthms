@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-#
 '''
 @Project    :   ClassicAlgorighthms
-@File       :   RedBlack_Tree.py
+@File       :   RedBlackTree.py
 @USER       :   ZZZZZ
 @TIME       :   2021/4/25 20:48
 '''
@@ -58,7 +58,7 @@ def isRed(node):
 # ---------------------------- 红黑树 ----------------------------
 # ---------------------------------------------------------------
 # ---------------------------------------------------------------
-class RedBlack_Tree():
+class RedBlackTree():
     '''
     红黑树 与 2-3树可以 一一对应
 
@@ -444,7 +444,7 @@ class RedBlack_Tree():
         return res
 
 if __name__ == "__main__":
-    rbt = RedBlack_Tree()
+    rbt = RedBlackTree()
     # 从列表初始化红黑树
     rbt.init([5, 7, 8, 9, 0, 1, 2], [5, 7, 8, 9, 0, 1, 2])
     print("初始化后的红黑树为:\n{}".format(rbt))

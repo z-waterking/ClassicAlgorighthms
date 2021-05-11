@@ -1,62 +1,34 @@
 class Solution:
-    def shortestBridge(self, A):
-        # 先找其中一个岛屿
-        # 1. 将所有的结点加入一个队列
-        # 2. 讲所有的格子赋值为2
-        self.grid = A
-        self.queue = []
-        self.d = [-1, 0, 1, 0, -1]
-        flag = False
-        for i in range(len(A)):
-            if flag == True:
-                break
-            for j in range(len(A[i])):
-                if A[i][j] == 1:
-                    self.dfs(i, j)
-                    flag = True
-                    break
+    def updateMatrix(self, matrix):
+        m = len(matrix)
+        n = len(matrix[0])
 
-        level = 0
-        while len(self.queue) != 0:
-            level += 1
-            n = len(self.queue)
+        res = []
+        for i in range(m):
+            res.append([m * n] * n)
 
-            for i in range(n):
-                r, c = self.queue.pop(0)
-                for k in range(4):
-                    # 朝四个方向找一次
-                    x = r + self.d[k]
-                    y = c + self.d[k + 1]
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    res[i][j] = 0
+                else:
+                    if i > 0:
+                        res[i][j] = min(res[i - 1][j] + 1, res[i][j])
+                    if j > 0:
+                        res[i][j] = min(res[i][j - 1] + 1, res[i][j])
 
-                    if x >= 0 and x < len(self.grid) and y >= 0 and y < len(self.grid[0]):
-                        if self.grid[x][y] == 2:
-                            continue
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if matrix[i][j] == 0:
+                    res[i][j] = 0
+                else:
+                    if i < m - 1:
+                        res[i][j] = min(res[i + 1][j] + 1, res[i][j])
+                    if j < n - 1:
+                        res[i][j] = min(res[i][j + 1] + 1, res[i][j])
 
-                        # 找到了另外一个岛屿
-                        if self.grid[x][y] == 1:
-                            return level
+        return res
 
-                        self.queue.append((x, y))
-                        self.grid[x][y] = 2
-        return level
-
-    def dfs(self, i, j):
-        if i < 0 or j < 0 or i == len(self.grid) or j == len(self.grid[0]) or self.grid[i][j] == 2:
-            return
-        if self.grid[i][j] == 0:
-            self.queue.append((i, j))
-            return
-        self.grid[i][j] = 2
-        self.dfs(i + 1, j)
-        self.dfs(i - 1, j)
-        self.dfs(i, j + 1)
-        self.dfs(i, j - 1)
 
 sl = Solution()
-print(sl.shortestBridge([[0,0,0,0,0,0,0],
-                         [1,0,0,1,0,0,0],
-                         [1,1,1,1,0,0,0],
-                         [0,0,0,1,0,0,0],
-                         [1,0,0,0,0,0,0],
-                         [1,1,0,0,0,0,0],
-                         [1,0,0,0,0,0,0]]))
+print(sl.updateMatrix([[0,0,0],[0,1,0],[0,0,0]]))
