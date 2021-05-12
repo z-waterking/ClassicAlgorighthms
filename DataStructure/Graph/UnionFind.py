@@ -180,8 +180,15 @@ class UnionFind():
         :return:
         '''
         # 一直向后找，直到找到结点id与分量id相同的那个结点
+        # 每查询一次，就将当前结点的父节点变成其父节点的父节点
+        # 这样可以使得树不断地变得扁平
         while p != self.ids[p]:
-            p = self.ids[p]
+            # 当前结点的父结点
+            father = self.ids[p]
+            # 将父节点修改为 父节点的父节点
+            self.ids[p] = self.ids[father]
+            # 更新当前结点
+            p = self.ids[father]
 
         return p
 
