@@ -73,11 +73,62 @@ class QuickSort():
         quick_sort(0, len(nums)-1)
         return nums
 
+    def Solution2(self, nums):
+        '''
+        实现快速排序
+        :param nums: 待排序列表
+        :return: 排好序的列表
+        '''
+
+        def quick_sort_3way(left, right):
+            '''
+            3路快速排序，以防止数组中包含过多重复数据而影响性能
+            :param nums: 待排序数组
+            :param left: 排序的左边界
+            :param right: 排序的右边界
+            :return: 排好序的数组
+            '''
+            nonlocal nums
+            if left >= right:
+                return
+
+            l = left
+            r = right
+            i = l + 1
+
+            # 初始化进行比较的值
+            v = nums[l]
+            while i <= r:
+                # 对于小于v的值, 将它往左边换
+                if nums[i] < v:
+                    nums[i], nums[l] = nums[i], nums[l]
+                    i += 1
+                    l += 1
+                # 对于大于v的值，将它往右边换
+                elif nums[i] > v:
+                    nums[i], nums[r] = nums[r], nums[i]
+                    r -= 1
+                # 相等的值，跳过
+                else:
+                    i += 1
+
+            # 此时已经排好序了，
+            # l左边的都比v小
+            # r右边的都比v大。
+            # l-r中间的都与v相等
+            quick_sort_3way(left, l - 1)
+            quick_sort_3way(r + 1, right)
+
+        quick_sort_3way(0, len(nums) - 1)
+        return nums
+
     def GetExchangeCount(self):
         return self.exchange_count
 
 if __name__ == "__main__":
-    nums = [4, 5, 2, 9, 1]
+    nums = [4, 5, 2, 9, 1, 1, 1, 1]
     st = QuickSort()
     print("快速排序结果为: {}".format(st.Solution(nums)))
     print("交换次数为: {}".format(st.GetExchangeCount()))
+
+    print("3路快速排序结果为: {}".format(st.Solution2(nums)))
