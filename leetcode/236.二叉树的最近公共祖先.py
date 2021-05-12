@@ -24,6 +24,7 @@ class Solution:
 
         if left == None and right == None:
             return None
+
         if left != None and right != None:
             return root
         
