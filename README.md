@@ -18,7 +18,7 @@
 <tr><td>插入排序</td></tr>
 <tr><td>普通&nbsp;/&nbsp;3向切分&nbsp;快速排序</td></tr>
 <tr><td>递归&nbsp;/&nbsp;非递归&nbsp;归并排序</td></tr>
-<tr><td>计数）/&nbsp;桶排序</td></tr>
+<tr><td>计数 /&nbsp;桶排序</td></tr>
 <tr><td>堆排序</td></tr>
 <tr><td>希尔排序</td></tr>
 <tr><td>基数排序</td></tr>
