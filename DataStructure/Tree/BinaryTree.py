@@ -178,7 +178,7 @@ class BinaryTree():
                 stack.append(root)
                 root = root.left
 
-            #当root变为空时，需要出栈一个元素
+            #当root不为空时，需要出栈一个元素
             if len(stack) != 0:
                 # 此时需要拿出栈中的最后一个元素
                 # 往它的右子树走

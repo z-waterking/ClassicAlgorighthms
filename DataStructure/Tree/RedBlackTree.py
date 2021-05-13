@@ -66,6 +66,7 @@ class RedBlackTree():
     参考文献:
         1. 史上最清晰的红黑树讲解（上):  http://mt.sohu.com/20161014/n470317653.shtml
         2. 史上最清晰的红黑树讲解（下)：  https://www.sohu.com/a/116478983_355142
+        3. 《算法4》 3.3节：平衡查找树
     '''
     def __init__(self):
         self.__root = None
@@ -111,16 +112,21 @@ class RedBlackTree():
                 node.val = value
 
             # 假装现在左、右子树已经全部插入好了
-            # State3: 如果左黑，右红，则左旋 <-> 红链接插在了3结点的中间，这样转换为 State2
-            # 这种情况也处理了向2结点的右边插入结点
+            # 插入的结点一定是一个 红链接
+            # 则插入后可能情况如下：
+            # 1. 红链接插在了2（黑）结点的左边，则符合条件，不用操作
+
+            # 2. (1) 红链接插在了3（红）结点的中间    <->    State3: 如果左黑，右红，则左旋，这样转换为 State2
+            #
+            #    (2) 红链接插在了2（黑）结点的右边, 一次左旋即可修复
             if isRed(node.left) == False and isRed(node.right) == True:
                 node = self._rotateLeft(node)
 
-            # State2: 如果左红，且左边的左子结点也是红的，则右旋 <-> 红链接插在了3结点的左边,旋转后转换为 State1
+            # 3. 红链接插在了3（红）结点的左边   <->   State2: 如果左红，且左边的左子结点也是红的，则右旋，旋转后转换为 State1
             if isRed(node.left) == True and isRed(node.left.left) == True:
                 node = self._rotateRight(node)
 
-            # State1: 如果左红 且 右红，则改变node，node.left, node.right的颜色, 根节点变为红，将红色向上传递
+            # 4. 红链接插在了3（红）结点的右边   <->   State1: 如果左红 且 右红，则改变node，node.left, node.right的颜色, 根节点变为红，将红色向上传递
             if isRed(node.left) == True and isRed(node.right) == True:
                 node.flipColors()
 
