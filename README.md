@@ -1,37 +1,118 @@
 # 目录
 
 <table border=0.1 cellspacing=0 width="90%">
-<tr><td width="200">算法</td><td width="200">内容</td><td width="300">实现</td></tr>
-<tr><td rowspan=11><a href="#数据结构">数据结构</a></td><td rowspan=4><a href="#表">表</a></td><td>单链表</td></tr>
-<tr><td>双向链表</td></tr>
-<tr><td>哈希表</td></tr>
-<tr><td>最小栈</td></tr>
-<tr><td rowspan=5><a href="#树">树</a></td><td>二叉树</td></tr>
-<tr><td>字典树</td></tr>
-<tr><td>红黑树</td></tr>
-<tr><td>二叉平衡树</td></tr>
-<tr><td>堆</td></tr>
-<tr><td rowspan=2><a href="#图">图</a></td><td>并查集</td></tr>
-<tr><td>无向图</td></tr>
-<tr><td rowspan=15><a href="#经典算法">经典算法</a></td><td rowspan=9><a href="#排序算法">排序算法</a></td><td>冒泡排序</td></tr>
-<tr><td>选择排序</td></tr>
-<tr><td>插入排序</td></tr>
-<tr><td>普通&nbsp;/&nbsp;3向切分&nbsp;快速排序</td></tr>
-<tr><td>递归&nbsp;/&nbsp;非递归&nbsp;归并排序</td></tr>
-<tr><td>计数 /&nbsp;桶排序</td></tr>
-<tr><td>堆排序</td></tr>
-<tr><td>希尔排序</td></tr>
-<tr><td>基数排序</td></tr>
-<tr><td rowspan=2><a href="#搜索算法">搜索算法</a></td><td>二分查找</td></tr>
-<tr><td>二分查找左右边界</td></tr>
-<tr><td rowspan=3><a href="#回溯算法">回溯算法</a></td><td>子集</td></tr>
-<tr><td>组合</td></tr>
-<tr><td>全排列</td></tr>
-<tr><td rowspan=1><a href="#位运算">位运算</a></td><td>二进制中1的数量</td></tr>
-<tr><td><a href="#LeetCode">LeetCode</a></td><td></td><td></td></tr>
-<tr><td><a href="#LeetCode">数据结构思维导图</a></td><td></td><td></td></tr>
-<tr><td><a href="#LeetCode">各排序算法时间复杂度</a></td><td></td><td></td></tr>
+<tr>
+    <td width="200">算法</td>
+    <td width="200">内容</td>
+    <td width="300">实现</td>
+</tr>
+<tr>
+    <td rowspan=11><a href="#数据结构">数据结构</a></td>
+    <td rowspan=4><a href="#表">表</a></td>	
+    <td>单链表</td>
+</tr>
+<tr>
+	<td>双向链表</td>
+</tr>
+<tr>
+	<td>哈希表</td>
+</tr>
+<tr>
+	<td>最小栈</td>
+</tr>
+<tr>
+    <td rowspan=5><a href="#树">树</a></td>	
+    <td>二叉树</td>
+</tr>
+<tr>
+	<td>字典树</td>
+</tr>
+<tr>
+	<td>红黑树</td>
+</tr>
+<tr>
+	<td>二叉平衡树</td>
+</tr>
+<tr>
+	<td>堆</td>
+</tr>
+<tr>
+    <td rowspan=2><a href="#图">图</a></td>	
+    <td>并查集</td>
+</tr>
+<tr>
+	<td>无向图</td>
+</tr>
+<tr>
+    <td rowspan=16><a href="#经典算法">经典算法</a></td> 
+    <td rowspan=9><a href="#排序算法">排序算法</a></td> 
+    <td>冒泡排序</td>
+</tr>
+<tr>
+	<td>选择排序</td>
+</tr>
+<tr>
+	<td>插入排序</td>
+</tr>
+<tr>
+	<td>普通&nbsp;/&nbsp;3向切分&nbsp;快速排序</td>
+</tr>
+<tr>
+	<td>递归&nbsp;/&nbsp;非递归&nbsp;归并排序</td>
+</tr>
+<tr>
+	<td>计数 /&nbsp;桶排序</td>
+</tr>
+<tr>
+	<td>堆排序</td>
+</tr>
+<tr>
+	<td>希尔排序</td>
+</tr>
+<tr>
+	<td>基数排序</td>
+</tr>
+<tr>
+    <td rowspan=2><a href="#搜索算法">搜索算法</a></td>	
+    <td>二分查找</td>
+</tr>
+<tr>
+	<td>二分查找左右边界</td>
+</tr>
+<tr>
+    <td rowspan=3><a href="#回溯算法">回溯算法</a></td>	
+    <td>子集</td>
+</tr>
+<tr>
+	<td>组合</td>
+</tr>
+<tr>
+	<td>全排列</td>
+</tr>
+<tr>
+    <td rowspan=2><a href="#位运算">位运算</a></td>	
+    <td>二进制中1的数量</td>
+</tr>
+<tr>
+    <td>翻转二进制表示</td>
+</tr>
+<tr>
+	<td><a href="#LeetCode">LeetCode</a></td>	
+	<td></td>	
+	<td></td>
+</tr>
+<tr>
+	<td><a href="#LeetCode">数据结构思维导图</a></td>	
+	<td></td>	
+	<td></td>
+</tr>
+<tr>
+	<td><a href="#LeetCode">各排序算法时间复杂度</a></td>	
+	<td></td>	
+	<td></td>
+</tr>
 </table>
+
 <hr/>
 
 <h1 id="数据结构">数据结构</h1>
@@ -197,6 +278,7 @@
 <h2 id = "位运算">位运算</h2>
 
 * [二进制中1的数量](/Algorighms/Bin/NumberOf1.py)
+* [翻转二进制表示](/Algorighms/Bin/ReverseBits.py)
 
 
 <h1 id = "LeetCode">LeetCode</h1>
@@ -339,7 +421,6 @@
 |1110.删点成林.py|[1110.删点成林.py](/LeetCode/1110.删点成林.py)|
 |1143.最长公共子序列.py|[1143.最长公共子序列.py](/LeetCode/1143.最长公共子序列.py)|
 |1670.设计前中后队列.py|[1670.设计前中后队列.py](/LeetCode/1670.设计前中后队列.py)|
-
 
 <h1 id = "数据结构思维导图">数据结构思维导图</h1>
 
