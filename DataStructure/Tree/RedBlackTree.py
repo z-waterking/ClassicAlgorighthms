@@ -144,8 +144,67 @@ class RedBlackTree():
         # 每次插入完成后，将根节点设为黑色
         self.__root.color = 'Black'
 
-    def delete(self, value):
-        pass
+    def deleteMin(self):
+        '''
+        删除红黑树中的最小值
+        :return:
+        '''
+
+        # 如果root的左右子结点颜色为黑，将其变红
+        if isRed(self.__root.left) == False and isRed(self.__root.right) == False:
+            self.__root.color = 'Red'
+
+        self.__root = self._delMin(self.__root)
+
+        if(self.__root != None):
+            self.__root.color = 'Black'
+
+    def deleteMax(self):
+        '''
+        删除红黑树中的最大值
+        :return:
+        '''
+        if isRed(self.__root.left) == False and isRed(self.__root.right) == False:
+            self.__root.color = 'Red'
+
+        self.__root = self._delMax(self.__root)
+
+        if self.__root != None:
+            self.__root.color = 'Black'
+
+    def delete(self, key, value):
+        '''
+        删除红黑树中具体的key
+        :param key:
+        :param value:
+        :return:
+        '''
+        # 没查到，直接返回
+        if self.search(key) == False:
+            return
+
+        if isRed(self.__root.left) == False and isRed(self.__root.right) == False:
+            self.__root.color = 'Red'
+
+        self.__root = self._del(self.__root, key)
+
+        if self.__root != None:
+            self.__root.color = 'Black'
+
+    def getMin(self):
+        '''
+        取得树中的最小结点
+        :return:
+        '''
+        return self._MinNode(self.__root)
+
+    def getMax(self):
+        '''
+        取得树中的最大结点
+        :return:
+        '''
+
+        return self._MaxNode(self.__root)
 
     def search(self, key):
         '''
@@ -165,6 +224,7 @@ class RedBlackTree():
         # 没查到，返回None
         return None
 
+# --------------------- 私有方法 -----------------------
     def _rotateLeft(self, node):
         '''
         将一个红色右链接的结点  旋转  成为一个红色左链接的结点
@@ -251,6 +311,198 @@ class RedBlackTree():
             node.N += node.right.N
 
         return new_node
+
+    def _moveRedLeft(self, node):
+        '''
+        将右、左子树的红色链接转上来
+            // or \\  <-> 红链接
+
+           node -> S
+                 /   \
+                sl     sr
+                     //  \
+                  srl    srr
+                /   \
+              srll  srlr
+
+                    ⬇️
+
+                第一次旋转
+            node -> S
+                  /   \
+                sl    srl
+                     /   \\
+                  srll    sr
+                        /   \
+                     srlr   srr
+
+                     ⬇️
+
+                第二次旋转
+                   srl
+                /       \\
+               S          sr
+             /  \         /  \
+            sl   srll   srlr   srr
+
+        :param node:
+        :return:
+        '''
+        node.flipColors()
+
+        if node.right != None and isRed(node.right.left) == True:
+            node.right = self._rotateRight(node.right)
+            node = self._rotateLeft(node)
+            node.flipColors()
+
+        return node
+
+    def _moveRedRight(self, node):
+        '''
+        将左、左子树的红色链接转上来
+        // or \\  <-> 红链接
+
+               node ->  S
+                     /    \
+                   sl       sr
+                 //   \    /  \
+               sll   slr  srl  srr
+
+                        ⬇️
+
+                        sl
+                     //     \
+                   sll       S
+                            /  \
+                           slr  sr
+                              /  \
+                             srl  srr
+
+        :param node:
+        :return:
+        '''
+        node.flipColors()
+
+        if node.left != None and isRed(node.left.left):
+            node = self._rotateRight(node)
+            node.flipColors()
+
+        return node
+
+    def _delMin(self, node):
+        '''
+        删除以node为根的红黑树的最小结点
+        :param node:
+        :return:
+        '''
+        if node.left == None:
+            return None
+
+        # 把右、左子树的红链接转上来
+        if isRed(node.left) == False and isRed(node.left.left) == False:
+            node = self._moveRedLeft(node)
+
+        node.left = self._delMin(node.left)
+
+        return self._balance(node)
+
+    def _delMax(self, node):
+        '''
+        删除以node为根的树下键值最大结点
+        :param node:
+        :return:
+        '''
+        if isRed(node.left):
+            node = self._rotateRight(node)
+
+        if node.right == None:
+            return None
+
+        if isRed(node.right) == False and isRed(node.right.left) == False:
+            node = self._moveRedRight(node)
+
+        node.right = self._delMax(node.right)
+
+        return self._balance(node)
+
+    def _del(self, node, key):
+        '''
+        删除以node为根的树下键为key的结点
+        :param node:
+        :param key:
+        :return:
+        '''
+        if key < node.key:
+            # 向左删除
+            if isRed(node.left) == False and isRed(node.left.left) == False:
+                node = self._moveRedLeft(node)
+
+            node.left = self._del(node.left, key)
+        else:
+            if isRed(node.left) == True:
+                node = self._rotateRight(node)
+
+            if key == node.key and node.right == None:
+                return None
+
+            if isRed(node.right) == False and isRed(node.right.left):
+                node = self._moveRedRight(node)
+
+            if key == node.key:
+                x = self._MinNode(node.right)
+                node.key = x.key
+                node.val = x.val
+                node.right = self._delMin(node.right)
+            else:
+                node.right = self._del(node.right, key)
+
+        return self._balance(node)
+
+    def _MinNode(self, node):
+        '''
+        获取以node为根的树下最小结点
+        :param node:
+        :return:
+        '''
+        if node.left == None:
+            return node
+        else:
+            return self._MinNode(node.left)
+
+    def _MaxNode(self, node):
+        '''
+        获取以node为根的树下最大结点
+        :param node:
+        :return:
+        '''
+        if node.left == None:
+            return node
+        else:
+            return self._MaxNode(node.right)
+
+    def _balance(self, node):
+        '''
+        对node结点进行平衡操作
+        :param node:
+        :return:
+        '''
+        if isRed(node.right) == True and isRed(node.left) == False:
+            node = self._rotateLeft(node)
+
+        if isRed(node.left) == True and isRed(node.left.left) == True:
+            node = self._rotateRight(node)
+
+        if isRed(node.left) == True and isRed(node.right) == True:
+            node.flipColors()
+
+        # 更新node的N值,左右孩子可能为空，因此要判断
+        node.N = 1
+        if node.left != None:
+            node.N += node.left.N
+        if node.right != None:
+            node.N += node.right.N
+
+        return node
 
     # --------------------- 递归遍历 -----------------------
     def pre_traverse_recursion(self):
@@ -462,3 +714,16 @@ if __name__ == "__main__":
     # 查找红黑树中的结点
     res = rbt.search(10)
     print("查得的结点值为: {}".format(res))
+
+    # 删除红黑树中的最小结点
+    rbt.deleteMin()
+    print("删除最小结点后为: \n{}".format(rbt))
+
+    # 删除红黑树中的最小结点
+    rbt.deleteMin()
+    print("删除最小结点后为: \n{}".format(rbt))
+
+    # 删除红黑树中的特定结点
+    rbt.delete(9, 9)
+    print("删除最小结点后为: \n{}".format(rbt))
+
