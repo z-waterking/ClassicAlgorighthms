@@ -23,8 +23,10 @@ class Solution:
     def helper(self, root):
         if not root:
             return root
+        
         root.left = self.helper(root.left)
         root.right = self.helper(root.right)
+
         if root.val in self.to_delete:
             if root.left:
                 self.res.append(root.left)

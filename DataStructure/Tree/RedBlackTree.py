@@ -66,7 +66,7 @@ class RedBlackTree():
     参考文献:
         1. 史上最清晰的红黑树讲解（上):  http://mt.sohu.com/20161014/n470317653.shtml
         2. 史上最清晰的红黑树讲解（下)：  https://www.sohu.com/a/116478983_355142
-        3. 《算法4》 3.3节：平衡查找树
+        3. 《算法4》代码：https://algs4.cs.princeton.edu/code/
     '''
     def __init__(self):
         self.__root = None

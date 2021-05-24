@@ -26,9 +26,11 @@ class Solution:
         left = self.helper(root.left)
         right = self.helper(root.right)
 
+        # 如果已经不平衡了，返回-1
         if left == -1 or right == -1 or abs(left - right) > 1:
             return -1
         
+        # 返回最大子数深度
         return 1 + max(left, right)
 # @lc code=end
 
